@@ -57,15 +57,15 @@ hobbies = ['Sports', 'Cooking'];
 // We could say the person should store objects that have a name field where the value of type name field is string, age type number
 // let person: {}
 // We're telling TypeScript that only objects that have this kind of type should be storable in that variable.
-let person: {
-    name: string,
-    age: number
-};
+// let person: {
+//     name: string,
+//     age: number
+// };
 
-person = {
-    name: 'Max',
-    age: 32
-};
+// person = {
+//     name: 'Max',
+//     age: 32
+// };
 
 // Does not match
 // person = {
@@ -73,10 +73,10 @@ person = {
 // }
 
 // Store array of objects
-let people: {
-    name: string,
-    age: number
-}[];
+// let people: {
+//     name: string,
+//     age: number
+// }[];
 
 // Type inference
 /*
@@ -100,3 +100,74 @@ Now, that we have learned about those base types before I dive into functions an
 // let userName: string | string[]
 // We're allowing a number alternatively in combination of
 let course:string | number = 'React - The Complete Guide';
+
+// Type Aliases
+/**
+ * Now the more TypeScript code you're going to write, the higher the chances that at some point you might be repeating some type definition. And we're actually already doing this here. Here, for people, I'm saying that I want an array of this kind of object. So that I want an array full of objects that have this structure. And that's the same object I have up here for person. The same type definition just in the non array form. But the object type is the same. Now you can, of course, duplicate the type definition but it's more realistic that you wanna avoid that duplication. And for that, you can create a so-called type alias. You can define your own base type in which a more complex type definition is stored and the use that type alias instead of repeating the entire type definitions.
+ */
+
+/*
+let person: {
+    name: string;
+    age: number
+}
+
+let people: {
+    name: string;
+    age: number;
+}[];
+*/
+
+// Added TypeScript
+// type Person(Upto you) = Type Definition
+type Person = {
+    name: string,
+    age: number
+};
+
+// let person: Alias
+
+// let person: {
+//     name: string,
+//     age: number
+// };
+
+// let people: {
+//     name: string;
+//     age: number;
+// }[];
+
+// Person Object
+let person: Person;
+
+// Array full of persons
+let people: Person[];
+
+/**
+ * And that's the very important feature of type aliases which can save you a lot of typing work and which can, therefore, make your code more concise and easier to maintain.
+ */
+
+/*
+type StringAlias = string;
+type NumberAlias = number;
+// aliases for 'normal' types
+
+type SixAlias = 6;
+type MyFavouriteFood = "burger";
+// aliases for 'literal' types
+// these are usually useless on their own
+
+type Food = MyFavouriteFood | "pizza" | "pasta" | "salad";
+// they get useful when you combine them:
+// a Food can be one of these choices.
+
+type Foods = Food[];
+// this is an alias for an array of Foods.
+
+type SuccessfulResponse = {
+	message: string,
+  	statusCode: number,
+  	attachment?: string,
+	preferredFoods?: Foods,
+}          
+*/
