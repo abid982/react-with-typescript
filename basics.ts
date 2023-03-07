@@ -169,5 +169,44 @@ type SuccessfulResponse = {
   	statusCode: number,
   	attachment?: string,
 	preferredFoods?: Foods,
-}          
+}
 */
+
+// Functins & types
+function add(a: number, b: number) {
+    // Inference type
+    // Well, here in this function, I am returning a value and that tells TypeScript something about the return type, the type of the returned value of this function.
+    return a + b;
+}
+
+// Set the return type
+// function sum(a: number, b: number): string | number {
+//     return a + b;
+// }
+
+// I don't care about concrete type
+// Function clash
+// Getting an error
+// No return type
+/*
+It has no return statement and therefore it has a special return type called void. Void is basically comparable to nul and undefined, but it's only used in conjunction with functions and it means that this function never returns.
+*/
+function print(value: any) {
+    console.log(value);
+}
+
+// // Named function
+
+// //function with type as number
+// function add(x: number, y: number): number {
+//     // return sum of numbers entered as params
+//     return x + y;
+//   }
+
+//   // Anonymous function
+
+//   // variable to call and define function
+//   let myAdd = function (x: number, y: number): number {
+//     // return sum of numbers entered as params
+//     return x + y;
+//   };
