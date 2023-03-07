@@ -77,3 +77,12 @@ let people: {
     name: string,
     age: number
 }[];
+
+// Type inference
+/*
+Now, that we have learned about those base types before I dive into functions and parameters, I wanna talk about type inference. In all those examples, which are listed here, I always declared a variable with a type assigned. And then in a second step, I set a value. Now, often in programming, you do that in one step. You create a variable and you then already immediately assign an initial value. So therefore here let's talk about type inference. And let me show you what that is. Let's say we have another variable down here. The course variable. And in that course variable, I wanna store the name of a course like react the complete guide. Like this. Now, if I create this variable like this, and thereafter I try to store a number for an example, the course ID then you will see that I get an error, because the type number is not assignable to type string. But why am I getting this error? After all, I don't define a type anywhere. Well, here TypeScript used its powerful feature of type inference. By default, TypeScript tries to infer as many types as possible. So it tries to know which types are used where, without you explicitly stating those types. Which means that you need to write less code. I could also set my type here as we learned it. That would not be wrong, but it's redundant because if you immediately initialize this variable with a type TypeScript, will look at the value type here. So it will see that we stored a string in that variable. And it will then use that value type as an inferred type for this variable. And if you then try to assign a different type thereafter you'll get an error, because of type inference. And it is considered a good practice and a good idea to embrace that type inference feature. So to not unnecessarily specify the type in addition, you can do that you can explicitly state to type, but it's really redundant. It just means more word from your side and therefore you should not do that. You should instead stick to that type inference and use it whenever possible. And that's another super important feature which I wanted to highlight here.
+ */
+// let course = 'React - The Complete Guide';
+let course:string = 'React - The Complete Guide';
+
+// course = 12341;
