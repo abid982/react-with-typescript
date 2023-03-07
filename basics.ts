@@ -210,3 +210,51 @@ function print(value: any) {
 //     // return sum of numbers entered as params
 //     return x + y;
 //   };
+
+// Generics
+// Generic function
+// Utility helper function
+// Don't mutate original array
+
+// Convert to a generic function
+// function insertAtBeginning(array: any[], value: any) {
+//     // Create a new array
+//     // Copying the existing array
+//     const newArray = [value, ...array];
+// }
+
+// const demoArray = [1, 2, 3];
+// const updatedArray = insertAtBeginning(demoArray, -1); // [-1, 1, 2, 3]
+
+// updatedArray[0].split('');
+
+
+// Define a generic type
+// Same type of arguments array of numbers and value should have same type
+function insertAtBeginning<T>(array: T[], value: T) {
+    // Create a new array
+    // Copying the existing array
+    const newArray = [value, ...array];
+    return newArray;
+}
+// function insertAtBeginning<T>(array: T[], value: T) {
+//     // Create a new array
+//     // Copying the existing array
+//     const newArray = [value, ...array];
+//     return newArray;
+// }
+
+// const demoArray = [1, 2, 3];
+// const updatedArray = insertAtBeginning(demoArray, -1); // [-1, 1, 2, 3]
+
+insertAtBeginning(['a', 'b', 'c'], 'd');
+
+// Error: 'split' does not exist on type 'number'
+// updatedArray[0].split('');
+
+/*
+But how does this help us?
+
+Well like this set of codes it's just very cryptic, but now when we call this function, now TypeScript actually is able to understand that it should look at the concrete values of the arguments here. And it understands that this is an array of numbers and this is just a number and they are free to understand that updated array will be an array of numbers. Because of this generic type feature, because we're telling TypeScript that the type here is actually not any type it's not any kind of value. Instead, we tell it that the type of this array and of this value should be the same just that this is an array, but it's an array full of the same types of values as this single value has it. And that's an important piece of information. Therefore, TypeScript is able to look at the type of demo array, which it knows. It knows that this is a, an array of numbers it's able to infer this, and it looks at this type. And then it knows that logically, the array which gets constructed here has to be of the same type as the input array. It's able to infer this here. And hence, it's able to infer that what we get back here has to be an array of numbers. And if I would call, 'insertAtBeginning' here with an array of strings Like this, and I then pass in a string here, and I have my string array here, TypeScript is also able to infer this correctly because again, it looks at this type and this type and it knows that the return type is of the same value as this type, as T input array, enhance it again, infers this correctly. And therefore for the updated array here where it knows that it has to be an array full of numbers. It's now able to warn me when I try to call split. It tells me that this does not exist on type number. So that's just as important feature of generics.
+Importance: It's simply helps you write functions in this case, which are type safe yet flexible. They are flexible. They work with any type, but then once a certain type is used for that function, execution, that type is locked in and known. And that allows you to get the best of both worlds, flexibility and type safety. Again, I am fully aware that this generics feature can still be tricky to wrap your head around, but we'll also see it in action.
+*/
